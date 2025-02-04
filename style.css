@@ -1,6 +1,10 @@
 body {
+    display: flex;
+    height: 100svh;
     text-align: center;
     background: #f4f4f4;
+    flex-direction: column;
+    justify-content: center;
     font-family: Arial, sans-serif;
 }
 .board {
