@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+.board {
+    display: grid;
+    grid-gap: 2px;
+    margin: 10px auto;
+    justify-content: center;
+    grid-template-columns: repeat(4, 100px);
+}
+.card {
+    width: 100px;
+    color: white;
+    height: 100px;
+    display: flex;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    align-items: center;
+    background: #2ecc71;
+    justify-content: center;
+}
+.card.flipped {
+    background: #e74c3c;
+}
+.card.matched {
+    cursor: default;
+    background: #95a5a6;
+}
+dialog {
+    border-radius: 5px;
+    border: 1px solid #999;
+    background-image: linear-gradient(45deg, #eee, #ccc, #aaa);
+}
+::backdrop {
+    background: #333;
+    opacity: 0.75;
+}
