@@ -27,10 +27,16 @@ const matchCard = e => {
         }
         flipped = [];
         if (matched.length === cards.length) {
+            const { wins } = get('wins', {wins: []});
             document.querySelectorAll('.card').forEach(card => {
                 card.classList.remove('flipped');
                 card.textContent = '';
             });
+            wins.push(moves);
+            wins.sort();
+            wins.length = wins.length > 10 ? 10 : wins.length;
+            showWins();
+            set('wins', {wins});
             set('moves', {moves: 0});
             set('cards', {cards: []});
             set('matched', {matched: []});
@@ -71,6 +77,18 @@ const showMoves = e => {
     counter.textContent = moves;
 };
 
+const showWins = e => {
+    let { wins } = get('wins', {wins: []});
+    let winList = '';
+    let winListElement = document.querySelector('#wins');
+    for (win of wins) {
+        const winItem = document.createElement('li');
+        winItem.textContent = win;
+        winListElement.append(winItem);
+    }
+    counter.textContent = winList;
+};
+
 const showMatched = e => {
     const { matched } = get('matched', {matched: []});
     document.querySelectorAll('.card').forEach(card => {
@@ -107,4 +125,5 @@ const displayCards = e => {
     displayCards();
     showMatched();
     showMoves();
+    showWins();
 })();
