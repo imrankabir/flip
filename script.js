@@ -34,8 +34,7 @@ const matchCard = e => {
             });
             wins.push(moves);
             wins.sort();
-            wins.length = wins.length > 10 ? 10 : wins.length;
-            showWins();
+            wins.length = wins.length > 5 ? 5 : wins.length;
             set('wins', {wins});
             set('moves', {moves: 0});
             set('cards', {cards: []});
@@ -45,6 +44,7 @@ const matchCard = e => {
             dialog.textContent = `Congratulations! You won in ${moves} moves!`;
             setTimeout(e => {
                 board.textContent = '';
+                showWins();
                 displayCards();
                 dialog.close();
             }, 3000);
@@ -79,14 +79,13 @@ const showMoves = e => {
 
 const showWins = e => {
     let { wins } = get('wins', {wins: []});
-    let winList = '';
-    let winListElement = document.querySelector('#wins');
-    for (win of wins) {
+    let winList = document.querySelector('#wins');
+    winList.innerHTML = '';
+    for (const win of wins) {
         const winItem = document.createElement('li');
         winItem.textContent = win;
-        winListElement.append(winItem);
+        winList.append(winItem);
     }
-    counter.textContent = winList;
 };
 
 const showMatched = e => {

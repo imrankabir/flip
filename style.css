@@ -1,6 +1,7 @@
 body {
     display: flex;
     height: 100svh;
+    user-select: none;
     text-align: center;
     background: #f4f4f4;
     flex-direction: column;
@@ -34,28 +35,39 @@ body {
     cursor: default;
     background: #95a5a6;
 }
+.head {
+    width: 200px;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    margin: 0px auto;
+    font-weight: bold;
+    text-align: center;
+    background: #2ecc71;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 ul#wins {
     width: 200px;
     padding: 10px;
     margin: 0 auto;
-    list-style: none;
     background: white;
-    border-radius: 8px;
+    list-style: number;
     text-align: center;
+    border-radius: 0 0 8px 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 ul#wins li {
-    color: white;
+    color: #333;
     padding: 8px;
-    margin: 5px 0;
     font-size: 18px;
-    font-weight: bold;
+    margin: 5px 20px;
+    background: #eee;
     border-radius: 5px;
-    background: #3498db;
     transition: background 0.3s ease-in-out;
 }
 ul#wins li:hover {
-    background: #2980b9;
+    background: #ccc;
 }
 dialog {
     border-radius: 5px;
