@@ -36,7 +36,7 @@ body {
     background: #95a5a6;
 }
 .head {
-    width: 200px;
+    width: 350px;
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -48,7 +48,7 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 ul#wins {
-    width: 200px;
+    width: 350px;
     padding: 10px;
     margin: 0 auto;
     background: white;
