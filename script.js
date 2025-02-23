@@ -110,7 +110,7 @@ const showWins = e => {
     for (const [i, v] of wins.entries()) {
         if (i == 5) break;
         const winItem = document.createElement('li');
-        winItem.textContent = (v.name) ? `${v.name} (${v.moves})` : v;
+        winItem.textContent = (v.name) ? `${v.name} (${v.moves})` : `Player (${v})`;
         winList.append(winItem);
     }
 };
