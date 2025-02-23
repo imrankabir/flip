@@ -92,6 +92,14 @@ ul#wins li:hover {
 .win-effect {
     animation: win 1.5s ease-in-out;
 }
+span#name {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+span#name:focus {
+    outline: none;
+}
 dialog {
     border-radius: 5px;
     border: 1px solid #999;

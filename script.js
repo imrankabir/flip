@@ -37,8 +37,9 @@ const matchCard = e => {
         flipped = [];
         if (matched.length === cards.length) {
             const { wins } = get('wins', {wins: []});
-            wins.push(moves);
-            wins.sort();
+            const { name } = get('name', {name: 'Player'});
+            wins.push({name, moves});
+            wins.sort((a, b) => a.moves - b.moves);
             set('wins', {wins});
             setTimeout(() => {
                 playSound(winSound);
@@ -109,7 +110,7 @@ const showWins = e => {
     for (const [i, v] of wins.entries()) {
         if (i == 5) break;
         const winItem = document.createElement('li');
-        winItem.textContent = v;
+        winItem.textContent = `${v.name} (${v.moves})`;
         winList.append(winItem);
     }
 };
@@ -123,6 +124,8 @@ const showMatched = e => {
         }
     });
 };
+
+const showName = e => document.querySelector('#name').textContent = get('name', {name: 'Player'}).name;
 
 const getCards = e => {
     const cards = [...emojis, ...emojis];
@@ -144,9 +147,20 @@ const displayCards = e => {
     });
 };
 
+document.querySelector('#name').addEventListener('focus', e => {
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(e.target);
+    selection.removeAllRanges();
+    selection.addRange(range);
+});
+
+document.querySelector('#name').addEventListener('keyup', e => set('name', {name: e.target.textContent}));
+
 (e => {
     displayCards();
     showMatched();
     showMoves();
     showWins();
+    showName();
 })();
